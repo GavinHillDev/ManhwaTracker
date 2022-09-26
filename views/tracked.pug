@@ -1,0 +1,172 @@
+extends layout
+
+block content
+ h1= title 
+   
+   form(action='/', method='get')
+    button(class='homebutton' href='/') Home 
+   div(class='trackedboxes')
+    div(class='firstthree')
+    div(class='trackerbox' class='sunday')
+        h1(class='hone' ) Sunday 
+            ul 
+                for sundaytracker in sundaylist
+                 if user.username == sundaytracker.name
+                   form(action='/trackedsunday' method='POST')
+                    li
+                     a #{sundaytracker.title}
+                     br
+                     a Rank : #{sundaytracker.rank}
+                     br
+                     input#sundaytrackerid(type='hidden',name='powerholderid', required='true', value=sundaytracker._id )
+                     input(type='submit', value='Delete' class='') 
+                     
+    div(class='trackerbox')
+        h1(class='hone') Monday 
+            ul
+                for mondaytracker in mondaylist 
+                  if user.username == mondaytracker.name
+                   form(action='/trackedmonday' method='POST')
+                    li 
+                     a #{mondaytracker.title}
+                     br 
+                     a Rank : #{mondaytracker.rank}
+                     br
+                     input#mondaytrackerid(type='hidden',name='powerholderid', required='true', value=mondaytracker._id )
+                     input(type='submit', value='Delete' class='') 
+    div(class='trackerbox') 
+        h1(class='hone') Tuesday 
+            ul
+                for tuesdaytracker in tuesdaylist 
+                  if user.username == tuesdaytracker.name
+                   form(action='/trackedtuesday' method='POST')
+                    li 
+                     a #{tuesdaytracker.title}
+                     br 
+                     a Rank : #{tuesdaytracker.rank}
+                     br
+                     input(type='submit', value='Delete' class='') 
+    div(class='trackerbox') 
+        h1(class='hone') Wednesday 
+            ul
+                for wednesdaytracker in wednesdaylist
+                 form(action='/trackedwednesday' method='POST')
+                  if user.username == wednesdaytracker.name
+                    li 
+                     a #{wednesdaytracker.title}
+                     br 
+                     a Rank : #{wednesdaytracker.rank}
+                     br
+                     input(type='submit', value='Delete' class='') 
+    div(class='trackerbox') 
+        h1(class='hone') Thursday 
+            ul
+                for thursdaytracker in thursdaylist 
+                  if user.username == thursdaytracker.name
+                   form(action='/trackedthursday' method='POST')
+                    li 
+                     a #{thursdaytracker.title}
+                     br 
+                     a Rank : #{thursdaytracker.rank}
+                     br
+                     input(type='submit', value='Delete' class='') 
+    div(class='trackerbox') 
+        h1(class='hone') Friday 
+            ul
+                for fridaytracker in fridaylist 
+                  if user.username == fridaytracker.name
+                   form(action='/trackedfriday' method='POST')
+                    li 
+                     a #{fridaytracker.title}
+                     br 
+                     a Rank : #{fridaytracker.rank}
+                     br
+                     input(type='submit', value='Delete' class='') 
+    div(class='trackerbox' class='saturd') 
+        h1(class='hone') Saturday 
+            ul
+                for saturdaytracker in saturdaylist 
+                  if user.username == saturdaytracker.name
+                   form(action='/trackedsaturday' method='POST')
+                    li 
+                     a #{saturdaytracker.title}
+                     br 
+                     a Rank : #{saturdaytracker.rank}
+                     br
+                     input(type='submit', value='Delete' class='') 
+    
+    
+
+
+
+
+
+
+
+
+    //- <body> Figure out how to display data on tracked day, make div boxes, correct days as well as color
+    //-    Remake everything In Pug, also create 7 schemas one page with buttons
+    //-    Gonna have to use get date for the date then create a system that checks what day it is and week
+    //- <ul>
+    //-     <% trackers_list.forEach(function(tracker) { %>
+    //-         <div>
+    //-             <h1>Sunday</h1>
+    //-             <% if ( tracker.day  = 'sunday') {%>
+    //-                 <li> <%= tracker.day %> </li>
+    //-                 <li>User : <%= tracker.name %></li>
+    //-                 <li>Title : <%= tracker.title %></li>
+
+    //-                 <% } %>
+    //-         </div> 
+    //-             <div>
+    //-             <h1>Monday</h1>
+    //-             <% if (tracker.day = "monday") {%>
+    //-                 <li> <%= tracker.day %> </li>
+    //-                 <li>User : <%= tracker.name %></li>
+    //-                 <li>Title : <%= tracker.title %></li>
+
+    //-                 <% } %>
+    //-             </div>
+    //-             <div>
+    //-             <h1>Tuesday</h1>
+    //-             <% if (tracker.day = "tuesday") {%>
+    //-                 <li> <%= tracker.day %> </li>
+    //-                 <li>User : <%= tracker.name %></li>
+    //-                 <li>Title : <%= tracker.title %></li>
+
+    //-                 <% } %>
+    //-             </div>
+    //-             <h1>Wednesday</h1>
+    //-             <% if (tracker.day = "wednesday") {%>
+    //-                 <li> <%= tracker.day %> </li>
+    //-                 <li>User : <%= tracker.name %></li>
+    //-                 <li>Title : <%= tracker.title %></li>
+
+    //-                 <% } %>
+    //-             </div>
+    //-             <h1>Thursday</h1>
+    //-             <% if (tracker.day = "thursday") {%>
+    //-                 <li> <%= tracker.day %> </li>
+    //-                 <li>User : <%= tracker.name %></li>
+    //-                 <li>Title : <%= tracker.title %></li>
+
+    //-                 <% } %>
+    //-             </div>
+    //-             <h1>Friday</h1>
+    //-             <% if (tracker.day = "friday") {%>
+    //-                 <li> <%= tracker.day %> </li>
+    //-                 <li>User : <%= tracker.name %></li>
+    //-                 <li>Title : <%= tracker.title %></li>
+
+    //-                 <% } %>
+    //-             </div>
+    //-             <h1>Saturday</h1>
+    //-             <% if (tracker.day = "saturday") {%>
+    //-                 <li> <%= tracker.day %> </li>
+    //-                 <li>User : <%= tracker.name %></li>
+    //-                 <li>Title : <%= tracker.title %></li>
+
+    //-                 <% } %>
+    //-             </div>
+    //-         <% }) %>
+            
